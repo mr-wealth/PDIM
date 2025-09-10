@@ -349,10 +349,17 @@ packages:
     dependency: transitive
     description:
       name: watcher
+<<<<<<< HEAD
       sha256: "5bf046f41320ac97a469d506261797f35254fa61c641741ef32dacda98b7d39c"
       url: "https://pub.dev"
     source: hosted
     version: "1.1.3"
+=======
+      sha256: "0b7fd4a0bbc4b92641dbf20adfd7e3fd1398fe17102d94b674234563e110088a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.2"
+>>>>>>> fbf197c3f1d547450c5045827a08fa3854a5c316
   web:
     dependency: transitive
     description:

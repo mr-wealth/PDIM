@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: dart_classworks
+=======
+name: aula1
+>>>>>>> fbf197c3f1d547450c5045827a08fa3854a5c316
 description: A sample command-line application.
 version: 1.0.0
 # repository: https://github.com/my_org/my_repo
