@@ -1,4 +1,4 @@
-import 'package:aula1/aula1.dart';
+import 'package:dart_classworks/aula1.dart';
 import 'package:test/test.dart';
 
 void main() {
