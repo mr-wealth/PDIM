@@ -55,5 +55,5 @@ void main(List<String> arguments) {
   num num3Quad = math.pow(num3,2);
   num num4Quad = math.pow(num4,2);
   num soma = num1Quad + num2Quad + num3Quad + num4Quad;
-  print("A soma dos quadrados dos valores é ${soma}");
+  print("A soma dos quadrados dos valores é $soma");
 }
