@@ -44,16 +44,34 @@ void mediaAleatorios(){
   print("Media artimética: $media");
 }
 
-void main(){
-  //Exercício 01
-  //somaDe10();
+void lista2(){
+  print("""Escolhe um número para a questão que quer ver a resposta ou 0 para encerrar:
+  1. Soma de 10 números
+  2. Tabuada de um número N
+  3. Somad de números pares entre no intervalo de 0 até 1000000
+  4. Média aritmética de 1500 valores randômicos
+  """);
 
-  //Exercício 02
-  //tabuadaDeN();
+  int? escolha = int.parse(stdin.readLineSync()!);
 
-  //Ex 03
-  //somaDosPares();
-
-  //Ex 03
-  mediaAleatorios();
+  switch (escolha){
+    case 1:
+      somaDe10();
+      lista2();
+      break;
+    case 2:
+      tabuadaDeN();
+      lista2();
+      break;
+    case 3:
+      somaDosPares();
+      lista2();
+      break;
+    case 4:
+      mediaAleatorios();
+      lista2();
+      break;
+    case 0:
+      break;
+  }
 }
