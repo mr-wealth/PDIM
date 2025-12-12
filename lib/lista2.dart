@@ -166,11 +166,46 @@ void soma10Primeiros(){
 }
 
 void  rendaMediaAnual(){
-  double soma, rendaMin, rendaMax;
+  double somaRendaMensal, somaRendaAnual, rendaMin, rendaMax;
+  somaRendaMensal = somaRendaAnual = 0;
   rendaMin = 18000;
   rendaMax = 130000;
+  int habTotal = 120000;
+  List<double> rendaHabitantes = [];
 
+  for(int k = 0; k < 12; k++){
+    for(int i = 0; i < habTotal; i++){
+      double rendaHabitante = Random().nextDouble() * (rendaMax - rendaMin) + rendaMin;
+      rendaHabitantes.add(rendaHabitante);
+      somaRendaMensal += rendaHabitantes[i];
+    }
+    somaRendaAnual += somaRendaMensal;
+  }
 
+  double rendaMediaAnual = somaRendaAnual/habTotal;
+  print("Renda média anual: R\$${rendaMediaAnual.toStringAsFixed(2)}\n");
+}
+
+void imparesMultiplosDe3(){
+  List<int> numerosImpares = [];
+  int numeroImpar = 0;
+
+  for(int i = 17; i < 82753; i++){
+    if((i + 1) % 2 != 0 && (i + 1) % 3 == 0){
+      numeroImpar = i + 1;
+      numerosImpares.add(numeroImpar);
+    }
+  }
+
+  stdout.write("Números impares e múltiplos de 3 entre 17 e 82753: [");
+  for(int j = 0; j < numerosImpares.length - 2; j++){
+    stdout.write('${numerosImpares[j]}, ');
+  }
+  print("${numerosImpares.last}]\n");
+}
+
+void alturaJoaozinho(){
+  
 }
 
 void lista2(){
@@ -185,6 +220,8 @@ void lista2(){
   8. Imprimir número máximo e mínimo em 5000 valores inteiros aleatórios.
   9. Expressão de professor dependendo na média aritmética da turma.
   10. Soma dos 10 primeiros números maiores que N qualquer.
+  11. Renda média anual.
+  12. Números impares e múltiplos de 3 entre 17 e 82753.
   Pode ver o código em lib/lista2.dart
   """);
 
@@ -234,6 +271,16 @@ void lista2(){
     case 10:
       print('Exercício 10: Soma dos 10 primeiros números maiores que N qualquer.');
       soma10Primeiros();
+      lista2();
+      break;
+    case 11:
+      print('Exercício 11: Renda média anual.');
+      rendaMediaAnual();
+      lista2();
+      break;
+    case 12:
+      print('Exercício 12: Números impares e múltiplos de 3 entre 17 e 82753.');
+      imparesMultiplosDe3();
       lista2();
       break;
     case 0:
