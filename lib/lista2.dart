@@ -9,7 +9,7 @@ void somaDe10(){
     int? num = int.parse(stdin.readLineSync()!);
     soma += num;
   }
-  print("A soma dos 10 valores é $soma");
+  print("A soma dos 10 valores é $soma\n");
 }
 
 void tabuadaDeN(){
@@ -18,6 +18,7 @@ void tabuadaDeN(){
   for(int i = 1; i <= 12; i++){
     print("$N x $i = ${N*i}");
   }
+  print(" ");
 }
 
 void somaDosPares(){
@@ -28,7 +29,7 @@ void somaDosPares(){
       soma += i;
     }
   }
-  print("A soma de todos os números pares no intervalo de 0-1000000 é $soma");
+  print("A soma de todos os números pares no intervalo de 0-1000000 é $soma\n");
 }
 
 void mediaAleatorios(){
@@ -41,7 +42,7 @@ void mediaAleatorios(){
     soma += numAl;
   }
   media = soma/1500;
-  print("Media artimética: $media");
+  print("Media artimética: $media\n");
 }
 
 void imparesNegativos(){
@@ -67,7 +68,7 @@ void imparesNegativos(){
 
   print('(Entrada como lista) Número de ímpares negativos: $impNegCount');
   print('(Entrada como string) Número de ímpares negativos: $impNegDeString');
-  print('(Entrada como numero aleatório gerado) Número de ímpares negativos: $impNegRandCount');
+  print('(Entrada como numero aleatório gerado) Número de ímpares negativos: $impNegRandCount\n');
 
 }
 
@@ -136,6 +137,7 @@ void mediaDeTurma(){
   int qtdAlunos = 40;
   int soma = 0;
 
+  print("Entre as notas dos 40 alunos: ");
   for(int i = 0; i < qtdAlunos; i++){
     int nota = int.parse(stdin.readLineSync()!);
     soma += nota;
@@ -205,14 +207,189 @@ void imparesMultiplosDe3(){
 }
 
 void alturaJoaozinho(){
+  double altNascimento = 37.6;
+  double alt18Anos = altNascimento + (18*6.75);
+  print("Altura de Joãozinho com 25 anos de idade: ${alt18Anos.toStringAsFixed(2)}cm\n");
+}
+
+void inteirosPositivos(){
+  List<int> inteiros = [];
+  int inteiro, maior, menor, soma;
+  double media;
+  int qtdints = 500;
+  soma = menor = maior = 0;
+
+  print("Para os valores de teste, pode os valores contidos em lib/num.txt");
+  for (int i = 0; i < qtdints; i++){
+    stdout.write("Entre um inteiro positivo: ");
+    inteiro = int.parse(stdin.readLineSync()!);
+    inteiros.add(inteiro);
+    soma += inteiro;
+
+    if(i == 0){
+      menor = inteiros[0];
+      maior = inteiros[0];
+    }
+    if(inteiros[i] < menor) menor = inteiros[i];
+    if(inteiros[i] > maior) maior = inteiros[i];
+  }
   
+  media = soma/qtdints;
+  print("""\n
+O maior valor dos $qtdints valores lidos é: $maior
+O menor valor dos $qtdints valores lidos é: $menor
+A soma dos $qtdints valores é: $soma
+A média dos $qtdints valores é: ${media.toStringAsFixed(2)}
+\n""");
+}
+
+void lucroPrejuizoEmpate(){
+  double somaPrecosCusto, lucro, prejuizo, somaPrecosVenda, precoCusto, precoVenda;
+  somaPrecosCusto = somaPrecosVenda = 0;
+  int qtdProdutos = 400;
+
+  for(int i = 0; i < qtdProdutos; i++){
+    print("Para os valores de teste, pode os valores contidos em lib/num.txt");
+    stdout.write("Entre o preço de custo do produto ${i+1}: ");
+    precoCusto = double.parse(stdin.readLineSync()!);
+    somaPrecosCusto += precoCusto;
+
+    stdout.write("Entre o preco de venda do produto ${i+1}: ");
+    precoVenda = double.parse(stdin.readLineSync()!);
+    somaPrecosVenda += precoVenda;
+
+    if(precoVenda > precoCusto){
+      lucro = precoVenda - precoCusto;
+      print("Houve lucro para produto ${i+1}, sendo-o: R\$ ${lucro.toStringAsFixed(2)}\n");
+    }
+    else if(precoVenda < precoCusto){
+      prejuizo = precoCusto - precoVenda;
+      print("Houve prejuízo para produto ${i+1}, sendo-o: R\$ ${prejuizo.toStringAsFixed(2)}\n");
+    }
+    else{
+      print("Houve empate de preço de custo e preço de venda para produto ${i+1}.\n");
+    }
+  }
+
+  double mediaPrecosCusto = somaPrecosCusto/qtdProdutos;
+  double mediaPrecosVenda = somaPrecosVenda/qtdProdutos;
+  print("Média de preços de custo para os $qtdProdutos produtos: R\$ ${mediaPrecosCusto.toStringAsFixed(2)}");
+  print("Média de preços de venda para os $qtdProdutos produtos: R\$ ${mediaPrecosVenda.toStringAsFixed(2)}\n");
+}
+
+void tabuada20DeN(){
+  int N, qtdvalores;
+  qtdvalores = 20;
+
+  for(int i = 0; i < qtdvalores; i++){
+    N = Random().nextInt(20);
+    for(int j = 1; j <= 12; j++){
+      if(j < 12) stdout.write("$j x $N = ${j * N}\t");
+      if(j == 12) stdout.write("$j x $N = ${j * N}\n");
+    }
+  }
+  print("\n");
+}
+
+void somaEntre2ValoresQuaisquer(){
+  int valor1, valor2;
+  int soma = 0;
+  stdout.write("Entre um valor: ");
+  valor1 = int.parse(stdin.readLineSync()!);
+  stdout.write("Entre um outro valor maior que o anterior: ");
+  valor2 = int.parse(stdin.readLineSync()!);
+
+  if(valor2 < valor1){
+    print("Erro: O segundo valor deve ser maior do que o primeiro. Tente de novo!\n");
+    somaEntre2ValoresQuaisquer();
+  }
+  else{
+    for(int i = valor1; i <= valor2; i++){
+      soma += i;
+    }
+    print("A soma de todos os números inteiros entre $valor1 e $valor2 inclusive é: $soma\n");
+  }
+}
+
+void bonusEspecial(){
+  double comprasTotal;
+  stdout.write("Entre o valor total das compras do ano passado do cliente: ");
+  comprasTotal = double.parse(stdin.readLineSync()!);
+
+  double bonus = (comprasTotal < 500000) ? (comprasTotal * 0.1) : (comprasTotal * 0.25);
+  print("Bonus do cliente: $bonus");
+}
+
+void multiplosDe11(){
+  List<int> multiplosDe11 = [];
+  
+  for(int i = 0; i <= 7598; i++){
+    if(i % 11 == 0){
+      multiplosDe11.add(i);
+    }
+  }
+  print("Múltiplos de 11 entre 0 e 7598");
+  stdout.write("[");
+  for(int j = 0; j < (multiplosDe11.length - 2); j++){
+    stdout.write("${multiplosDe11[j]}, ");
+  }
+  stdout.write("${multiplosDe11.last}]\n");
+}
+
+void sexoEPeso(){
+  int qtdPessoas = 12;
+  int qtdMulheres = 0;
+  int qtdHomens = 0;
+  double somaPesoMulheres, maiorPesoHomens;
+  somaPesoMulheres = maiorPesoHomens = 0;
+
+  List<String> sexos = [];
+  List<double> pesos = [];
+  List<double> pesosHomem = [];
+
+  for(int i = 0; i < qtdPessoas; i++){
+    stdout.write("Entre o sexo da ${i+1}ª pessoa(M para masculino e F para feminino): ");
+    String sexo = stdin.readLineSync()!;
+    sexos.add(sexo);
+
+    stdout.write("Entre o peso da ${i+1}ª pessoa: ");
+    double peso = double.parse(stdin.readLineSync()!);
+    print(" ");
+    pesos.add(peso);
+  }
+  
+  for(int j = 0; j < qtdPessoas; j++){
+    if(sexos[j] == 'F' || sexos[j] == 'f'){
+      qtdMulheres++;
+      somaPesoMulheres += pesos[j];
+    }
+    else{
+      pesosHomem.add(pesos[j]);
+      if(pesos[j] > 100){
+        qtdHomens++;
+      }
+    }
+  }
+  
+  for(int k = 0; k < pesosHomem.length; k++){
+    if(k == 0){
+      maiorPesoHomens = pesosHomem[k];
+    }
+    if(pesosHomem[k] > maiorPesoHomens) maiorPesoHomens = pesosHomem[k];
+  }
+
+  double mediaPesoMulheres = somaPesoMulheres/qtdMulheres;
+  print("Quantidade de mulheres cadastradas: $qtdMulheres");
+  print("Quantidade de homens com peso mais de 100Kg: $qtdHomens");
+  print("Média de peso entre as mulheres: $mediaPesoMulheres");
+  print("Maior peso entre os homens: $maiorPesoHomens\n");
 }
 
 void lista2(){
   print("""Escolhe um número para a questão que quer ver a resposta ou 0 para encerrar:
   1. Soma de 10 números.
   2. Tabuada de um número N.
-  3. Somad de números pares entre no intervalo de 0 até 1000000.
+  3. Soma de números pares entre 0 e 1000000.
   4. Média aritmética de 1500 valores randômicos.
   5. Número de impares negativos em 1250 valores.
   6. Contar números pares e impares em 500 valores.
@@ -222,6 +399,14 @@ void lista2(){
   10. Soma dos 10 primeiros números maiores que N qualquer.
   11. Renda média anual.
   12. Números impares e múltiplos de 3 entre 17 e 82753.
+  13. Altura de Joãozinho.
+  14. Imprimir valor maior, menor, soma e média de 500 inteiros positivos.
+  15. Lucro, prejuízo ou empate de N produtos.
+  16. Tabuada de 20 valores aleatórios de N imprimido em uma linha.
+  17. A soma de todos os números inteiros entre dois valores n1 e n2 inclusive.
+  18. Bonus especial.
+  19. Múltiplos de 11 entre 0 e 7598.
+  20. Sexo e peso de 12 pessoas cadastradas.
   Pode ver o código em lib/lista2.dart
   """);
 
@@ -229,22 +414,27 @@ void lista2(){
 
   switch (escolha){
     case 1:
+      print('Exercício 1: Soma de 10 números.');
       somaDe10();
       lista2();
       break;
     case 2:
+      print('Exercício 2: Tabuada de um número N.');
       tabuadaDeN();
       lista2();
       break;
     case 3:
+      print('Exercício 3: Soma de números pares entre 0 e 1000000.');
       somaDosPares();
       lista2();
       break;
     case 4:
+      print('Exercício 4: Média aritmética de 1500 valores randômicos.');
       mediaAleatorios();
       lista2();
       break;
     case 5:
+      print('Exercício 5: Número de impares negativos em 1250 valores.');
       imparesNegativos();
       lista2();
       break;
@@ -281,6 +471,46 @@ void lista2(){
     case 12:
       print('Exercício 12: Números impares e múltiplos de 3 entre 17 e 82753.');
       imparesMultiplosDe3();
+      lista2();
+      break;
+    case 13:
+      print('Exercício 13: Altura de Joãozinho.');
+      alturaJoaozinho();
+      lista2();
+      break;
+    case 14:
+      print('Exercício 14: Imprimir valor maior, menor, soma e média de 500 inteiros positivos');
+      inteirosPositivos();
+      lista2();
+      break;
+    case 15:
+      print('Exercício 15: Lucro, prejuízo ou empate de N produtos.');
+      lucroPrejuizoEmpate();
+      lista2();
+      break;
+    case 16:
+      print('Exercício 16: Tabuada de 20 valores aleatórios de N imprimido em uma linha.');
+      tabuada20DeN();
+      lista2();
+      break;
+    case 17:
+      print('Exercício 17: A soma de todos os números inteiros entre dois valores n1 e n2 inclusive.');
+      somaEntre2ValoresQuaisquer();
+      lista2();
+      break;
+    case 18:
+      print('Exercício 18: Bonus especial.');
+      bonusEspecial();
+      lista2();
+      break;
+    case 19:
+      print('Exercício 19: Múltiplos de 11 entre 0 e 7598.');
+      multiplosDe11();
+      lista2();
+      break;
+    case 20:
+      print('Exercício 20: Sexo e peso de 12 pessoas cadastradas.');
+      sexoEPeso();
       lista2();
       break;
     case 0:

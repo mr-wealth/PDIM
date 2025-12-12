@@ -23,5 +23,7 @@ void inicio(){
       break;
     case 2:
       lista2.lista2();
+    default:
+      print("Só tem até lista 2 feito. Trabalho em progresso para os outros :)");
   }
 }
